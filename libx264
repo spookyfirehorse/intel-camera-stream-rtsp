@@ -1,0 +1,3 @@
+ffmpeg -hwaccel vdpau   -fflags +genpts+nobuffer   -flags low_delay  -hide_banner  -strict experimental  \
+   -f pulse   -i alsa_input.pci-0000_00_0e.0.analog-stereo  -f v4l2   -i /dev/video0 -c:v libx264 -b:v 1M  -preset ultrafast -tune zerolatency  -filter:v  fps=fps=source_fps:round=zero:start_time=0:eof_action=>
+   -c:a  libfdk_aac -eld_sbr 1   -vbr 0  -b:a 96k -fps_mode:v cfr  -ac 1    -ar 48000   -f rtsp -rtsp_transport udp rtsp://
